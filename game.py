@@ -11,7 +11,16 @@ def new_game():
     return
 
 def main():
-    return
+    game_interface.startSetUp()
+
+    #Main game loop
+    while True:
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                sys.exit()
+    game_interface.display_interface()
+    pygame.display.update()
 
 if __name__ == "__main__":
     main()

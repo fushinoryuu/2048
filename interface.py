@@ -49,3 +49,6 @@ class GameInterface:
     def reset_game(self):
         """This function resets the game"""
         return
+
+    def display_interface(self):
+        return
