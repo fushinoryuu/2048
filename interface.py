@@ -7,8 +7,8 @@ pygame.init()
 class GameInterface:
     """This class represents the interface for the game's menu."""
     def __init__(self):
-        self.display_width = 1080
-        self.display_height = 1920
+        self.display_width = 720
+        self.display_height = 1280
 
         self.display_surface = pygame.display.set_mode((self.display_width, self.display_height), 0, 32)
         pygame.display.set_caption('2048')
@@ -31,6 +31,8 @@ class GameInterface:
         self.tile_1024 = (239, 198, 66)
         self.tile_2048 = (234, 192, 44)
 
+        self.display_surface.fill(self.background_color)
+
         #Attributes for buttons in the game
         self.button_width = self.display_width//5
         self.button_height = self.button_width//4
@@ -39,16 +41,16 @@ class GameInterface:
         self.button_position = (self.button_x, self.button_y)
 
         #Button
-        self.start_button = SimpleButton(self.button_width, self.button_height, self.tile_2, self.text_color, "Restart",
+        self.restart_button = SimpleButton(self.button_width, self.button_height, self.tile_2, self.text_color, "Restart",
                                          self.display_surface, self.button_position)
+        self.button_list = [self.restart_button]
 
-        self.game_font = pygame.font.SysFont("Clear Sans", 100)
+        gameFont = pygame.font.SysFont("Sans Serif", 72)
+        self.title_text_surface = gameFont.render("2048", True, self.text_color, None)
 
-        self.score = 0
-
-    def reset_game(self):
-        """This function resets the game"""
-        return
+    def display_buttons(self):
+        for x in self.button_list:
+            x.display_button()
 
     def display_interface(self):
-        return
+        self.display_buttons()

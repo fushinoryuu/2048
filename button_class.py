@@ -14,7 +14,6 @@ class SimpleButton:
         self.position = position
         self.button_color = color
         self.text_color = text_color
-        self.bullet_hole = pygame.image.load('gameimages/bullet.png')
 
         # Generate a greyed-out version of color and a highlighted version of color.
         self.button_greyed = (color[0] * .25, color[1] * .25, color[2] * .25)
