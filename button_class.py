@@ -44,7 +44,7 @@ class SimpleButton:
         """Helper function to make text surface and blit on button_surface."""
 
         # Set up the Font Object and how to Change Fonts
-        button_font = pygame.font.SysFont("Sans Serif", self.t_height)
+        button_font = pygame.font.SysFont("MS Sans Serif Regular", self.t_height)
 
         # Render a Text Surface
         self.text_surface = button_font.render(self.label, True, self.text_color, None)
@@ -63,7 +63,7 @@ class SimpleButton:
         yes_or_no = (self.active and p1[0] <= mouse_xy[0] <= p2[0] and p1[1] <= mouse_xy[1] <= p2[1])
         return yes_or_no
 
-    def activate(self):
+    def active(self):
         """Sets the button to active mode."""
         self.active = True
 
@@ -82,7 +82,6 @@ class SimpleButton:
             self.button_bg(self.highlight_color)
             self.button_text()
             self.surface.blit(self.button_surface, self.position)
-            self.surface.blit(self.bullet_hole, (self.position[0] + 25, self.position[1] - 10))
 
     def display_button(self):
         """Displays the button."""

@@ -48,9 +48,6 @@ class GameInterface:
                                            self.button_position)
         self.button_list = [self.restart_button]
 
-        gameFont = pygame.font.SysFont("Sans Serif", 72)
-        self.title_text_surface = gameFont.render("2048", True, self.text_color, None)
-
     def display_buttons(self):
         for x in self.button_list:
             x.display_button()
