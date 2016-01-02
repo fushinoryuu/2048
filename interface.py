@@ -7,10 +7,11 @@ pygame.init()
 class GameInterface:
     """This class represents the interface for the game's menu."""
     def __init__(self):
-        self.display_width = 720
-        self.display_height = 1280
+        self.display_width = 600
+        self.display_height = 800
 
-        self.display_surface = pygame.display.set_mode((self.display_width, self.display_height), 0, 32)
+        self.display_surface = pygame.display.set_mode((self.display_width,
+                                                        self.display_height), 0, 32)
         pygame.display.set_caption('2048')
 
         #RGB colors for later use
@@ -19,6 +20,7 @@ class GameInterface:
         self.alt_text_color = (189, 178, 172)
         self.board_color = (132, 121, 115)
         self.empty_cell = (148, 138, 124)
+        self.button_color = (250, 0, 0)
         self.tile_2 = (239, 231, 222)
         self.tile_4 = (231, 223, 198)
         self.tile_8 = (247, 178, 123)
@@ -36,13 +38,14 @@ class GameInterface:
         #Attributes for buttons in the game
         self.button_width = self.display_width//5
         self.button_height = self.button_width//4
-        self.button_x = self.display_width//2 - self.button_width//2
-        self.button_y = self.display_height//2 - self.button_height//2 + 150
+        self.button_x = self.display_width/8
+        self.button_y = self.display_height/3
         self.button_position = (self.button_x, self.button_y)
 
         #Button
-        self.restart_button = SimpleButton(self.button_width, self.button_height, self.tile_2, self.text_color, "Restart",
-                                         self.display_surface, self.button_position)
+        self.restart_button = SimpleButton(self.button_width, self.button_height, self.button_color,
+                                           self.text_color, "Restart", self.display_surface,
+                                           self.button_position)
         self.button_list = [self.restart_button]
 
         gameFont = pygame.font.SysFont("Sans Serif", 72)
@@ -52,5 +55,38 @@ class GameInterface:
         for x in self.button_list:
             x.display_button()
 
+    def display_board(self):
+        """This function will draw the game board."""
+        x = self.display_width/8
+        y = self.display_height/2.5
+
+        #Game board
+        pygame.draw.rect(self.display_surface, self.board_color, Rect((x, y), (450, 450)))
+
+        #First row of empty cells
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 10, y + 10), (100, 100)))
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 120, y + 10), (100, 100)))
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 230, y + 10), (100, 100)))
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 340, y + 10), (100, 100)))
+
+        #Second row of empty cells
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 10, y + 120), (100, 100)))
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 120, y + 120), (100, 100)))
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 230, y + 120), (100, 100)))
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 340, y + 120), (100, 100)))
+
+        #Third row of empty cells
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 10, y + 230), (100, 100)))
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 120, y + 230), (100, 100)))
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 230, y + 230), (100, 100)))
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 340, y + 230), (100, 100)))
+
+        #Fourth row of empty cells
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 10, y + 340), (100, 100)))
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 120, y + 340), (100, 100)))
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 230, y + 340), (100, 100)))
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 340, y + 340), (100, 100)))
+
     def display_interface(self):
         self.display_buttons()
+        self.display_board()
