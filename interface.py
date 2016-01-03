@@ -1,6 +1,8 @@
 import pygame
 from pygame.locals import *
 from button_class import SimpleButton
+from tile import Tile
+from rules import GameRules
 
 pygame.init()
 
@@ -13,6 +15,14 @@ class GameInterface:
         self.display_surface = pygame.display.set_mode((self.display_width,
                                                         self.display_height), 0, 32)
         pygame.display.set_caption('2048')
+
+        #This matrix represent that game board.
+        self.game_board = [
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0]
+        ]
 
         #RGB colors for later use
         self.background_color = (49, 36, 25)
@@ -47,6 +57,8 @@ class GameInterface:
                                            self.text_color, "Restart", self.display_surface,
                                            self.button_position)
         self.button_list = [self.restart_button]
+
+        self.rules = GameRules()
 
     def display_buttons(self):
         for x in self.button_list:
@@ -84,6 +96,18 @@ class GameInterface:
         pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 230, y + 340), (100, 100)))
         pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 340, y + 340), (100, 100)))
 
+    def start_setup(self):
+        """This function starts the set u for the game setting up the buttons and the game board."""
+        self.restart_button.active = True
+        self.rules.insert_number(self.game_board)
+
+    def print_board(self):
+        print(self.game_board)
+
     def display_interface(self):
         self.display_buttons()
         self.display_board()
+
+    def reset_game(self):
+        """Resets everything for a new game."""
+        return

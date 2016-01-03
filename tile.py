@@ -10,3 +10,16 @@ class Tile:
         self.position = position
         self.value = value
         self.size = size
+
+    def draw_tile(self):
+        return
+
+    def set_value(self, value):
+        """This function helps us set a new value to the object."""
+        self.value = value
+
+    def draw_value(self, value):
+        self.draw_tile()
+
+    def display_tile(self):
+        self.draw_value()
