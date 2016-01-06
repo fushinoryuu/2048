@@ -24,6 +24,17 @@ class GameInterface:
             [0, 0, 0, 0]
         ]
 
+        self.x_loc = self.display_width/8
+        self.y_loc = self.display_height/2.5
+
+        #This is a matrix of the locations of each slot
+        self.locations = {
+            [(self.x_loc + 10, self.y_loc + 10), (self.x_loc + 120, self.y_loc + 10), (self.x_loc + 230, self.y_loc + 10), (self.x_loc + 340, self.y_loc + 10)],
+            [(self.x_loc + 10, self.y_loc + 120), (self.x_loc + 120, self.y_loc + 120), (self.x_loc + 230, self.y_loc + 120), (self.x_loc + 340, self.y_loc + 120)],
+            [(self.x_loc + 10, self.y_loc + 230), (self.x_loc + 120, self.y_loc + 230), (self.x_loc + 230, self.y_loc + 230), (self.x_loc + 340, self.y_loc + 230)],
+            {(self.x_loc + 10, self.y_loc + 340), (self.x_loc + 120, self.y_loc + 340), (self.x_loc + 230, self.y_loc + 340), (self.x_loc + 340, self.y_loc + 340)}
+        }
+
         #RGB colors for later use
         self.background_color = (49, 36, 25)
         self.text_color = (255, 255, 255)
@@ -66,35 +77,33 @@ class GameInterface:
 
     def display_board(self):
         """This function will draw the game board."""
-        x = self.display_width/8
-        y = self.display_height/2.5
 
         #Game board
-        pygame.draw.rect(self.display_surface, self.board_color, Rect((x, y), (450, 450)))
+        pygame.draw.rect(self.display_surface, self.board_color, Rect((self.x_loc, self.y_loc), (450, 450)))
 
         #First row of empty cells
-        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 10, y + 10), (100, 100)))
-        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 120, y + 10), (100, 100)))
-        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 230, y + 10), (100, 100)))
-        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 340, y + 10), (100, 100)))
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((self.x_loc + 10, self.y_loc + 10), (100, 100)))
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((self.x_loc + 120, self.y_loc + 10), (100, 100)))
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((self.x_loc + 230, self.y_loc + 10), (100, 100)))
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((self.x_loc + 340, self.y_loc + 10), (100, 100)))
 
         #Second row of empty cells
-        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 10, y + 120), (100, 100)))
-        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 120, y + 120), (100, 100)))
-        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 230, y + 120), (100, 100)))
-        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 340, y + 120), (100, 100)))
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((self.x_loc + 10, self.y_loc + 120), (100, 100)))
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((self.x_loc + 120, self.y_loc + 120), (100, 100)))
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((self.x_loc + 230, self.y_loc + 120), (100, 100)))
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((self.x_loc + 340, self.y_loc + 120), (100, 100)))
 
         #Third row of empty cells
-        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 10, y + 230), (100, 100)))
-        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 120, y + 230), (100, 100)))
-        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 230, y + 230), (100, 100)))
-        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 340, y + 230), (100, 100)))
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((self.x_loc + 10, self.y_loc + 230), (100, 100)))
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((self.x_loc + 120, self.y_loc + 230), (100, 100)))
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((self.x_loc + 230, self.y_loc + 230), (100, 100)))
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((self.x_loc + 340, self.y_loc + 230), (100, 100)))
 
         #Fourth row of empty cells
-        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 10, y + 340), (100, 100)))
-        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 120, y + 340), (100, 100)))
-        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 230, y + 340), (100, 100)))
-        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((x + 340, y + 340), (100, 100)))
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((self.x_loc + 10, self.y_loc + 340), (100, 100)))
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((self.x_loc + 120, self.y_loc + 340), (100, 100)))
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((self.x_loc + 230, self.y_loc + 340), (100, 100)))
+        pygame.draw.rect(self.display_surface, self.empty_cell, Rect((self.x_loc + 340, self.y_loc + 340), (100, 100)))
 
     def start_setup(self):
         """This function starts the set u for the game setting up the buttons and the game board."""

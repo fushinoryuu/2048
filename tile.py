@@ -7,12 +7,17 @@ class Tile:
     def __init__(self, surface, position, value, size):
         """This function defines some values of the die and where things should display."""
         self.surface = surface
-        self.position = position
         self.value = value
         self.size = size
 
-    def draw_tile(self):
+    def draw_tile(self, value, position, color):
         return
+
+    def set_location(self, matrix, position, color):
+        for i in range(0,4):
+            for j in range(0,4):
+                if matrix[i][j] is not 0:
+                    self.draw_tile(matrix[i][j], position, color )
 
     def set_value(self, value):
         """This function helps us set a new value to the object."""
